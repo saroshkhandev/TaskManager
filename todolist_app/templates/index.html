@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Welcome! - Taskmate</title>
+{% endblock title %}
+
+
+{% block content %}
+    <div class=container>
+        <div class="row mt-5">
+            <div class="col-lg-4">
+                <img src="{% static 'images/pexels-jessica-lewis-3361483.jpg' %}" class="rounded-3 shadow" alt="img1" width="420" height="250">
+            </div>
+            <div class="col-lg-4">
+                <img src="{% static 'images/pexels-karolina-grabowska-4195327.jpg' %}" class="rounded-3 shadow" alt="img2" width="420" height="250">
+            </div>
+            <div class="col-lg-4">
+                <img src="{% static 'images/pexels-lumn-1410226.jpg' %}" class="rounded-3 shadow" alt="img3" width="420" height="250">
+            </div>
+        </div>
+
+        <div class="row mt-5 text-center">
+            <div class="col-md-10 offset-md-1">
+                <p class="h1 text-primary">Easy to Use, Manage Your Daily Jobs more Easily</p>
+                <p class="h2 mt-4">"Make Your Life Productive with TaskMate"</p>
+                <p class="h5">Edit your tasks in a snap</p>
+
+                {% if user.is_authenticated %}
+                    <a href="{% url 'todolist' %}"><button type="button" class="btn btn-primary btn-lg mt-3 shadow">Let's Get Started</button></a>
+                {% else %}
+                    <a href="{% url 'login' %}">
+                        <button class="btn btn-outline-dark me-2 mt-2" type="submit">Login</button>
+                     </a>
+                    <a href="{% url 'register' %}">
+                        <button class="btn btn-outline-info me-2 mt-2" type="submit">Register</button>
+                    </a>
+                {% endif %}
+
+                
+            </div>
+            
+        </div>
+    </div>
+{% endblock content %}
